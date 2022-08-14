@@ -23,8 +23,8 @@ for i in list_stk:
 	ma20=sum(dataframe.Close[-20:])/20
 	ta1=ta.momentum.stochrsi(dataframe.Close,14)
 	dict1[i]=[ta1[-2]*100]
-	dict1[i].append(ta1[-2]*100)
-	dict1[i].append(dataframe.Close[-2])
+	dict1[i].append(ta1[-1]*100)
+	dict1[i].append(dataframe.Close[-1])
 	dict1[i].append(ma20)
 	df = pd.DataFrame.from_dict(dict1, orient = 'index',columns=["Previous",'Current',"CPrice","MA"])
 	df["stochrsi"]=np.where(((df.Previous < 20) & (df.Current > 20)) ,    "up",   np.where(((df.Previous > 80) & (df.Current < 80)) ,    "down",   "-"))

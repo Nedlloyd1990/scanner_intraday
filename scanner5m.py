@@ -18,7 +18,7 @@ current_date = st.sidebar.date_input("Start Date", datetime.today())
 
 for i in list_stk:
 	stk= yf.Ticker(i)
-	stk_price = stk.history(start=current_date- timedelta(days=100),end=current_date,  interval="5m")
+	stk_price = stk.history(start=current_date- timedelta(days=10),end=current_date,  interval="5m")
 	dataframe=pd.DataFrame(stk_price)
 	ma20=sum(dataframe.Close[-20:])/20
 	ta1=ta.momentum.stochrsi(dataframe.Close,14)
